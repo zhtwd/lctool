@@ -18,4 +18,4 @@ python setup install
 ## Usage
 --------
 Use freely all the functions and/or two easy commands (lc-get and lc-submit).
-* Please input your own username and password in func.py if you want use submit functions.
+* Please input your own username and password in func.py if you want to use submit functions.
