@@ -39,6 +39,9 @@ setup(
     description=("commandline tool for leetcode"),
     packages=['lctool'],
     scripts=[],
+    install_requires=[
+        'BeautifulSoup',
+    ],
     entry_points={
         'console_scripts': [
             'lc-get = lctool.run: lcget',
