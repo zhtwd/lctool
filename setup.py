@@ -40,6 +40,7 @@ setup(
     packages=['lctool'],
     scripts=[],
     install_requires=[
+        'requests',
         'BeautifulSoup',
     ],
     entry_points={
