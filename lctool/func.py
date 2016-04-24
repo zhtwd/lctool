@@ -63,10 +63,13 @@ class lctool:
         codes = mydiv.attrMap['ng-init']
         qid = int(codes.split('[{')[1].split('},],')[1].split(',')[1])
         codesj = ("{%s}" % codes.split('[{')[1].split('},],')[0]).split('},{')
-        codesj = [cj + '}' if not cj.endswith('}') else '{' + cj for cj in codesj]
         res = ''
         lang = ''
         for cj in codesj:
+            if not cj.endswith('}'):
+                cj += '}'
+            if not cj.startswith('{'):
+                cj = '{' + cj;
             js = str(cj).replace("'", "\"")
             codeinfo = defaultdict(str)
             try:
@@ -76,6 +79,7 @@ class lctool:
             if codeinfo['text'] == language:
                 res = codeinfo[u'defaultCode']
                 lang = codeinfo[u'value']
+                break
         return res, qid, lang
 
     def submit_problem(self, problem_path):
