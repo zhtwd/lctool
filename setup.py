@@ -47,7 +47,6 @@ setup(
         'console_scripts': [
             'lc-get = lctool.run: lcget',
             'lc-submit = lctool.run: submit',
-            'lc-refresh = lctool.run: lcrefresh',
             ]
         },
     classifiers=[
