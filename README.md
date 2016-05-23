@@ -27,8 +27,8 @@ Use freely all the functions and/or two easy commands (lc-get and lc-submit).
 ### New lc-get command with --overwrite argument:
 * lc-get command will skip the process of downloading and overriding specific file content if original file exists. 
 
-  * It can help when adding newest problem without losing solutions for old problems.
+  * Newest problems can be added without losing solutions for old ones.
 
-  * Also, it can help with the bad network connection.(For example: if there are HTTP error and therefore unable to dowland the whole repo of problems from leetcode, this command is needed for resuming from break-points by default)
+  * It can help with the bad network connection. (For example: if there are HTTP error and therefore unable to dowland the whole repo of problems from leetcode, this command will resume from break-points by default)
 
 * Whole problem sets can be updated by adding --overwrite argument.
