@@ -24,11 +24,11 @@ Use freely all the functions and/or two easy commands (lc-get and lc-submit).
 > Available languages are 'C++', 'Java', 'Python', 'C', 'C#', 'JavaScript', 'Ruby', 'Swift', 'Go'. (Case sensitive)
 
 
-Explanation for new lc-get command and its --overwrite argument:
-* This command will skip the process of downloading and overriding specific file content if original file exists.
+### New lc-get command with --overwrite argument:
+* lc-get command will skip the process of downloading and overriding specific file content if original file exists. 
 
-* Therefore it can help when you want to add newest problem without losing your solutions for old problems.
+- It can help when adding newest problem without losing solutions for old problems.
 
-* Also, it can help for people with bad network connection.(Me as an example: always meet HTTP error and therefore unable to dowland the whole repo of problems from leetcode, so I need this command to resume from break-points)
+- Also, it can help with the bad network connection.(For example: if there are HTTP error and therefore unable to dowland the whole repo of problems from leetcode, this command is needed for resuming from break-points by default)
 
-* If you want to use old lc-get's function, add --overwrite argument, this will update your whole repository.
+* Whole problem sets can be updated by adding --overwrite argument.
