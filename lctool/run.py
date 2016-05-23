@@ -6,16 +6,19 @@ def lcget():
     parser = argparse.ArgumentParser()
     parser.add_argument("-p", "--path", help="Directory for lc files",
                         type=str)
+    parser.add_argument("--overwrite", help="Overwrite existed file and code", action="store_true")
+
     args = parser.parse_args()
     path = args.path
+    overwriteflag = args.overwrite
     lc = lctool()
     tag_list = lc.get_tag_list()
-    suffix = {'cpp': 'cpp', 'python': 'py', 'c': 'c', 'csharp': 'cs',
+    suffix = {'cpp': 'cpp', 'python': 'py', 'c': 'c', 'csharp': 'cs', 'java': 'java',
               'javascript': 'js', 'ruby': 'rb', 'swift': 'swift', 'golang': 'go'}
     comments = {'cpp': ['/*', '*/'], 'python': ['"""', '"""'], 'c': ['/*', '*/'],
                 'csharp': ['/*', '*/'], 'javascript': ['/*', '*/'],
                 'ruby': ['=begin', '=end'], 'swift': ['/*', '*/'],
-                'golang': ['/*', '*/']}
+                'golang': ['/*', '*/'], 'java': ['/*', '*/']}
     if not path:
         path = '.'
     for tag in tag_list:
@@ -34,6 +37,9 @@ def lcget():
                 source, _, lang = lc.get_problem_source(problem)
                 lan_suffix = suffix[lang]
                 filepath += '.' + lan_suffix
+                if os.path.exists(filepath) and not overwriteflag:
+                    print 'problem exists: ', tag, problem
+                    continue
                 with open(filepath, 'w') as f:
                     f.write("%s\n" % comments[lang][0])
                     f.write(content.encode('utf-8'))
