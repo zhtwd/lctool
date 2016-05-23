@@ -10,6 +10,8 @@ def lcget():
     path = args.path
     lc = lctool()
     tag_list = lc.get_tag_list()
+    suffix = {'cpp': 'cpp', 'python': 'py', 'c': 'c', 'csharp': 'cs',
+              'javascript': 'js', 'ruby': 'rb', 'swift': 'swift', 'golang': 'go'}
     if not path:
         path = '.'
     for tag in tag_list:
@@ -26,9 +28,8 @@ def lcget():
                 if not content:
                     continue
                 source, _, lang = lc.get_problem_source(problem)
-                if lang == 'python':
-                    lang = 'py'
-                filepath += '.' + lang
+                lan_suffix = suffix[lang]
+                filepath += '.' + lan_suffix
                 with open(filepath, 'w') as f:
                     if lang == 'py':
                         f.write('"""')
