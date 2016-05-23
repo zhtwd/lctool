@@ -6,8 +6,11 @@ def lcget():
     parser = argparse.ArgumentParser()
     parser.add_argument("-p", "--path", help="Directory for lc files",
                         type=str)
+    parser.add_argument("--overwrite", help="Overwrite existed file and code", action="store_true")
+
     args = parser.parse_args()
     path = args.path
+    overwriteflag = args.overwrite
     lc = lctool()
     tag_list = lc.get_tag_list()
     suffix = {'cpp': 'cpp', 'python': 'py', 'c': 'c', 'csharp': 'cs',
@@ -30,6 +33,9 @@ def lcget():
                 filepath = dirpath + '/' + problem
                 content = lc.get_problem(problem)
                 if not content:
+                    continue
+                if os.path.exists(filepath + '.' + 'java') and not overwriteflag:
+                    print 'problem exists: ', tag, problem
                     continue
                 source, _, lang = lc.get_problem_source(problem)
                 lan_suffix = suffix[lang]
