@@ -55,7 +55,7 @@ class lctool:
             res += '\n'
         return res
 
-    def get_problem_source(self, problem, language='Java'):
+    def get_problem_source(self, problem, language='C++'):
         url = self.baseurl + '/problems/' + problem
         f = urllib.urlopen(url)
         soup = BeautifulSoup(f)
