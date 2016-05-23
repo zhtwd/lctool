@@ -12,6 +12,10 @@ def lcget():
     tag_list = lc.get_tag_list()
     suffix = {'cpp': 'cpp', 'python': 'py', 'c': 'c', 'csharp': 'cs',
               'javascript': 'js', 'ruby': 'rb', 'swift': 'swift', 'golang': 'go'}
+    comments = {'cpp': ['/*', '*/'], 'python': ['"""', '"""'], 'c': ['/*', '*/'],
+                'csharp': ['/*', '*/'], 'javascript': ['/*', '*/'],
+                'ruby': ['=begin', '=end'], 'swift': ['/*', '*/'],
+                'golang': ['/*', '*/']}
     if not path:
         path = '.'
     for tag in tag_list:
@@ -31,15 +35,9 @@ def lcget():
                 lan_suffix = suffix[lang]
                 filepath += '.' + lan_suffix
                 with open(filepath, 'w') as f:
-                    if lang == 'py':
-                        f.write('"""')
-                    else:
-                        f.write('/*\n')
+                    f.write("%s\n" % comments[lang][0])
                     f.write(content.encode('utf-8'))
-                    if lang == 'py':
-                        f.write('"""')
-                    else:
-                        f.write('*/\n')
+                    f.write("%s\n" % comments[lang][1])
                     f.write('\n\n')
                     f.write(source.encode('utf-8'))
                 nf.write('*' * 30 + problem + '\n')
