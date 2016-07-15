@@ -13,7 +13,7 @@ Requirements:
 2. pip install BeautifulSoup
 
 Install:
-python setup install
+python setup.py install
 
 ## Usage
 --------
