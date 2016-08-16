@@ -9,7 +9,7 @@ into folders according to tags. You can also submit it using command line.
 ## Installation
 ---------------
 Requirements:
-1. Anaconda (recommended) or other python environments
+1. Anaconda (recommended, required in most raw linux distros) or other python environments
 2. pip install BeautifulSoup
 
 Install:
