@@ -59,8 +59,11 @@ class lctool:
         url = self.baseurl + '/problems/' + problem
         f = urllib.urlopen(url)
         soup = BeautifulSoup(f)
-        mydiv = soup.findAll("div", { "class" : "container" }).pop()
-        codes = mydiv.attrMap['ng-init']
+        mydivs = soup.findAll("div", { "class" : "container" })
+        codes = []
+        for div in mydivs:
+            if 'ng-init' in div.attrMap:
+                codes = div.attrMap['ng-init']
         qid = int(codes.split('[{')[1].split('},],')[1].split(',')[1])
         codesj = ("{%s}" % codes.split('[{')[1].split('},],')[0]).split('},{')
         res = ''
