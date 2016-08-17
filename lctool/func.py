@@ -104,7 +104,10 @@ class lctool:
         with open(abspath) as f:
             payload['typed_code'] = f.read()
         tmp = client.get(url_submit)
-        headers = {'X-CSRFToken': client.cookies['csrftoken'], 'Referer': url, 'Cookie': client.cookies}
+        cookie_str = ''
+        for c in client.cookies.keys():
+            cookie_str += c + '=' + client.cookies[c] + ';'
+        headers = {'X-CSRFToken': client.cookies['csrftoken'], 'Referer': url, 'Cookie': cookie_str}
         midres1 = client.post(url_submit, data = json.dumps(payload), headers=headers)
         submission = midres1.json()
         sid = submission[u'submission_id']
