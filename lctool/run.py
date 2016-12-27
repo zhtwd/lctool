@@ -34,7 +34,10 @@ def lcget():
                 content = lc.get_problem(problem)
                 if not content:
                     continue
-                source, _, lang = lc.get_problem_source(problem)
+                try:
+                    source, _, lang = lc.get_problem_source(problem)
+                except:
+                    continue
                 lan_suffix = suffix[lang]
                 filepath += '.' + lan_suffix
                 if os.path.exists(filepath) and not overwriteflag:
